@@ -47,7 +47,7 @@ This project helps students instantly know whether they can **attend or take lea
 - **HTML5** — Semantic structure  
 - **CSS3** — Gradients, transitions, dark mode, responsive UI  
 - **JavaScript (ES6)** — DOM manipulation, logic & state handling  
-- **LocalStorage API** — Client-side data persistence  
+- **LocalStorage** — Client-side data persistence  
 
 ---
 
