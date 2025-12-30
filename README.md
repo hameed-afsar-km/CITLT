@@ -1,13 +1,13 @@
-# 🎓 Can I Take Leave Today? — Frontend Attendance Tracker
+# 🎓 Can I Take Leave Today? — Attendance Tracker
 
 [![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
 [![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
 [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-[![Frontend Only](https://img.shields.io/badge/Frontend-Only-4CAF50?style=for-the-badge)](#)
+[![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com/)
 
-_📌 Live Demo: **(Add link if hosted on GitHub Pages / Vercel)**_
+_🌐 Live Demo: [Can I Take Leave Today(CITLT) on Vercel](https://citlt.vercel.app/)_
 
-A smart **attendance decision-making web app** built using **pure HTML, CSS, and Vanilla JavaScript**.  
+A smart & fun **attendance decision-making web app** built using **pure HTML, CSS, and Vanilla JavaScript**.  
 This project helps students instantly know whether they can **attend or take leave today** without risking minimum attendance requirements.
 
 --- 
