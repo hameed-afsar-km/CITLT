@@ -77,10 +77,10 @@ cd can-i-take-leave-today
 --- 
 
 ## 📸 Screenshots  
-<img width="auto" height="210" alt="image" src="https://github.com/user-attachments/assets/35044298-e24f-4642-b741-726cd2e6581b" />
-<img width="auto" height="210" alt="image" src="https://github.com/user-attachments/assets/5b806918-f609-4413-878e-96a386af678f" />
-<img width="auto" height="210" alt="image" src="https://github.com/user-attachments/assets/2f091f2e-32af-49ba-a2b8-9e415af60d19" />
-<img width="auto" height="210" alt="image" src="https://github.com/user-attachments/assets/403da440-eaa4-40e9-ba4f-f58248a34c8c" />
+<img width="auto" height="205" alt="image" src="https://github.com/user-attachments/assets/35044298-e24f-4642-b741-726cd2e6581b" />
+<img width="auto" height="205" alt="image" src="https://github.com/user-attachments/assets/5b806918-f609-4413-878e-96a386af678f" />
+<img width="auto" height="205" alt="image" src="https://github.com/user-attachments/assets/2f091f2e-32af-49ba-a2b8-9e415af60d19" />
+<img width="auto" height="205" alt="image" src="https://github.com/user-attachments/assets/403da440-eaa4-40e9-ba4f-f58248a34c8c" />
 
 
 --- 
