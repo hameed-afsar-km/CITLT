@@ -55,7 +55,7 @@ This project helps students instantly know whether they can **attend or take lea
 
 ### Clone the repository
 ```bash
-git clone https://github.com/hameed-afsar-km/can-i-take-leave-today.git
+git clone https://github.com/hameed-afsar-km/CITLT.git
 ```
 ### Navigate into the project folder
 ```bash
