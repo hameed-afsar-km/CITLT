@@ -1,0 +1,250 @@
+:root {
+    --bg-color-light: #e0e0e0;
+    --bg-color-dark: #161a1d;
+    --text-color: #000;
+    --card-bg: #fff;
+    --primary-color: #3179ff;
+    --input-bg-light: #e0e0e0;
+    --input-bg-dark: #424242;
+    --input-text-dark: #fff;
+    --footer-bg-light: #f2f2f2;
+    --footer-bg-dark: #121212;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    color: var(--text-color);
+    padding: 20px;
+    max-width: 600px;
+    margin: auto;
+    transition: color 0.3s ease;
+    position: relative;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(135deg, #a7acb7, #8e9ce4, #7562c7);
+    z-index: -1;
+    opacity: 1;
+    transition: opacity 0.6s ease;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(135deg, #0f2027, #204332, #2f2f2f);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+body.dark::before {
+    opacity: 0;
+}
+
+body.dark::after {
+    opacity: 1;
+}
+
+body.dark {
+    --bg-color: var(--bg-color-dark);
+    --text-color: #fff;
+    --card-bg: #1e1e1e;
+    --primary-color: #13fd4e;
+    --input-bg: var(--input-bg-dark);
+    --input-text: var(--input-text-dark);
+    --footer-bg: var(--footer-bg-dark);
+}
+
+h1,
+h3 {
+    text-align: center;
+    color: var(--primary-color);
+}
+
+input,
+button {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background-color: var(--input-bg-light);
+    color: var(--text-color);
+    font-size: 16px;
+    line-height: 1.2;
+    height: 48px;
+    appearance: none;
+}
+
+button {
+    background-color: var(--primary-color);
+    color: white;
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+
+button:hover {
+    filter: brightness(1.1);
+}
+
+body.dark input {
+    background-color: var(--input-bg);
+    color: var(--input-text);
+}
+
+body.dark button {
+    background-color: #2ebd52;
+}
+
+.card {
+    background: var(--card-bg);
+    padding: 15px;
+    border-radius: 10px;
+    margin: 15px 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.card-content {
+    display: none;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.card,
+.summary,
+footer {
+    transition: background-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+input,
+button {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.theme-toggle,
+.form-section {
+    text-align: center;
+}
+
+.delete-btn,
+.edit-btn {
+    margin-top: 8px;
+    width: 48%;
+    display: inline-block;
+}
+
+.delete-btn {
+    background: #e53935;
+}
+
+.summary {
+    background: var(--card-bg);
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    font-size: 15px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+}
+
+.tag {
+    font-weight: bold;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-size: 12px;
+    margin-left: 10px;
+}
+
+.tag.safe {
+    background: #4caf50;
+    color: white;
+}
+
+.tag.warning {
+    background: #ffc107;
+    color: black;
+}
+
+.tag.danger {
+    background: #f44336;
+    color: white;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.attend-btn {
+    background: #2e7d32;
+    color: white;
+}
+
+.leave-btn {
+    background: #c62828;
+    color: white;
+}
+
+.attend-btn:hover,
+.leave-btn:hover {
+    filter: brightness(1.1);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.card-title {
+    font-size: 15px;
+}
+
+.card-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.card-actions button {
+    font-size: 12px;
+    padding: 4px 8px;
+}
+
+
+footer {
+    text-align: center;
+    margin-top: 40px;
+    padding: 15px;
+    background-color: var(--footer-bg-light);
+    color: var(--text-color);
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+footer .author {
+    font-weight: 600;
+    color: var(--primary-color);
+    transition: color 0.3s ease;
+}
+
+body.dark footer {
+    background-color: var(--footer-bg-dark);
+    color: #aaa;
+}
+
+body.dark footer .author {
+    color: #2dc653;
+}
