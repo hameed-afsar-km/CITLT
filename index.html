@@ -1,328 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Can I Take Leave Today?</title>
-  <style>
-    :root {
-      --bg-color-light: #e0e0e0;
-      --bg-color-dark: #161a1d;
-      --text-color: #000;
-      --card-bg: #fff;
-      --primary-color: #2196f3;
-      --input-bg-light: #e0e0e0;
-      --input-bg-dark: #424242;
-      --input-text-dark: #fff;
-      --footer-bg-light: #f2f2f2;
-      --footer-bg-dark: #121212;
-    }
-
-    body.dark {
-      --bg-color: var(--bg-color-dark);
-      --text-color: #fff;
-      --card-bg: #1e1e1e;
-      --primary-color: #2dc653;
-      --input-bg: var(--input-bg-dark);
-      --input-text: var(--input-text-dark);
-      --footer-bg: var(--footer-bg-dark);
-    }
-
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: var(--bg-color);
-      color: var(--text-color);
-      padding: 20px;
-      max-width: 600px;
-      margin: auto;
-      transition: background 0.3s, color 0.3s;
-    }
-
-    h1, h3 {
-      text-align: center;
-      color: var(--primary-color);
-    }
-
-    input, button {
-      width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      background-color: var(--input-bg);
-      color: var(--input-text);
-      font-size: 16px;
-    }
-
-    button {
-      background-color: var(--primary-color);
-      color: white;
-      cursor: pointer;
-      border: none;
-    }
-
-    button:hover {
-      filter: brightness(1.1);
-    }
-
-    .card {
-      background: var(--card-bg);
-      padding: 15px;
-      border-radius: 10px;
-      margin: 15px 0;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      cursor: pointer;
-    }
-
-    .card-content {
-      display: none;
-      font-size: 14px;
-      margin-top: 10px;
-    }
-
-    .theme-toggle, .form-section {
-      text-align: center;
-    }
-
-    .delete-btn, .edit-btn {
-      margin-top: 8px;
-      width: 48%;
-      display: inline-block;
-    }
-
-    .delete-btn {
-      background: #e53935;
-    }
-
-    .summary {
-      background: var(--card-bg);
-      padding: 10px;
-      margin-bottom: 20px;
-      border-radius: 10px;
-      font-size: 15px;
-      box-shadow: 0 0 8px rgba(0,0,0,0.05);
-    }
-
-    .tag {
-      font-weight: bold;
-      padding: 2px 8px;
-      border-radius: 20px;
-      font-size: 12px;
-      margin-left: 10px;
-    }
-
-    .tag.safe {
-      background: #4caf50;
-      color: white;
-    }
-
-    .tag.warning {
-      background: #ffc107;
-      color: black;
-    }
-
-    .tag.danger {
-      background: #f44336;
-      color: white;
-    }
-
-    footer {
-      text-align: center;
-      margin-top: 40px;
-      padding: 15px;
-      background-color: var(--footer-bg-light);
-      color: var(--text-color);
-      border-radius: 10px;
-      font-size: 14px;
-    }
-
-    body.dark footer {
-      background-color: var(--footer-bg-dark);
-      color: #aaa;
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Can I Take Leave Today?</title>
+    <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
 
-  <h1>Can I Take Leave Today?</h1>
+    <h1>Can I Take Leave Today?</h1>
 
-  <div class="form-section">
-    <input type="text" id="subjectName" placeholder="Subject Name" />
-    <input type="number" id="semesterClasses" placeholder="Total Classes in Semester" />
-    <input type="number" id="conductedClasses" placeholder="Classes Conducted" />
-    <input type="number" id="attendedClasses" placeholder="Classes Attended" />
-    <input type="number" id="minPercent" placeholder="Minimum Required %" />
-    <button onclick="addOrUpdateSubject()">➕ Save Subject</button>
-    <input type="hidden" id="editIndex" value="">
-  </div>
+    <div class="form-section">
+        <input type="text" id="subjectName" placeholder="Subject Name" />
+        <input type="number" id="semesterClasses" placeholder="Total Classes in Semester" />
+        <input type="number" id="conductedClasses" placeholder="Classes Conducted" />
+        <input type="number" id="attendedClasses" placeholder="Classes Attended" />
+        <input type="number" id="minPercent" placeholder="Minimum Required %" />
+        <button onclick="addOrUpdateSubject()">Save Subject</button>
+        <input type="hidden" id="editIndex" value="">
+    </div>
 
-  <div class="theme-toggle">
-    <button onclick="toggleTheme()">🌗 Toggle Dark Mode</button>
-  </div>
+    <div class="theme-toggle">
+        <button onclick="toggleTheme()">🌗 Toggle Dark Mode</button>
+    </div>
 
-  <div class="summary" id="summaryBox"></div>
+    <div class="summary" id="summaryBox"></div>
 
-  <div id="subjectContainer"></div>
+    <div id="subjectContainer"></div>
 
-  <footer>© Developed by Hameed Afsar K M</footer>
+    <footer>© Developed by <span class="author">Hameed Afsar K M</span></footer>
 
-  <script>
-    function toggleTheme() {
-      document.body.classList.toggle('dark');
-    }
-
-    function getSubjects() {
-      return JSON.parse(localStorage.getItem('subjects') || "[]");
-    }
-
-    function saveSubjects(subjects) {
-      localStorage.setItem('subjects', JSON.stringify(subjects));
-    }
-
-    function addOrUpdateSubject() {
-      const name = document.getElementById("subjectName").value.trim();
-      const semester = +document.getElementById("semesterClasses").value;
-      const conducted = +document.getElementById("conductedClasses").value;
-      const attended = +document.getElementById("attendedClasses").value;
-      const min = +document.getElementById("minPercent").value;
-      const editIndex = document.getElementById("editIndex").value;
-
-      if (!name || semester <= 0 || conducted < 0 || attended < 0 || attended > conducted || conducted > semester || min <= 0 || min > 100) {
-        alert("❌ Please enter valid values.");
-        return;
-      }
-
-      const subjects = getSubjects();
-      const data = { name, semester, conducted, attended, min, date: new Date().toLocaleString() };
-
-      if (editIndex !== "") {
-        subjects[+editIndex] = data;
-        document.getElementById("editIndex").value = "";
-      } else {
-        subjects.push(data);
-      }
-
-      saveSubjects(subjects);
-      clearForm();
-      renderSubjects();
-    }
-
-    function clearForm() {
-      document.getElementById("subjectName").value = "";
-      document.getElementById("semesterClasses").value = "";
-      document.getElementById("conductedClasses").value = "";
-      document.getElementById("attendedClasses").value = "";
-      document.getElementById("minPercent").value = "";
-    }
-
-    function editSubject(index) {
-      const subject = getSubjects()[index];
-      document.getElementById("subjectName").value = subject.name;
-      document.getElementById("semesterClasses").value = subject.semester;
-      document.getElementById("conductedClasses").value = subject.conducted;
-      document.getElementById("attendedClasses").value = subject.attended;
-      document.getElementById("minPercent").value = subject.min;
-      document.getElementById("editIndex").value = index;
-      window.scrollTo(0, 0);
-    }
-
-    function deleteSubject(index) {
-      const subjects = getSubjects();
-      subjects.splice(index, 1);
-      saveSubjects(subjects);
-      renderSubjects();
-    }
-
-    function forecast(attended, conducted, minPercent, semesterTotal) {
-      const absent = conducted - attended;
-      const currentPercent = (attended / conducted) * 100;
-      const newPercent = (attended / (conducted + 1)) * 100;
-      const minAttendedRequired = Math.ceil((minPercent / 100) * semesterTotal);
-      const maxLeavesAllowed = semesterTotal - minAttendedRequired;
-      const leavesLeft = maxLeavesAllowed - absent;
-      let need = 0;
-      while ((attended + need) / (conducted + need) * 100 < minPercent && (conducted + need) < semesterTotal) need++;
-      const classesNeeded = (conducted + need) <= semesterTotal ? need : "Not possible";
-      return { absent, currentPercent, newPercent, maxLeavesAllowed, leavesLeft, classesNeeded };
-    }
-
-    function renderSummary(subjects) {
-      const summaryBox = document.getElementById("summaryBox");
-      if (subjects.length === 0) {
-        summaryBox.innerHTML = "";
-        return;
-      }
-
-      let total = 0;
-      let above = 0;
-      let below = 0;
-
-      subjects.forEach(s => {
-        const percent = (s.attended / s.conducted) * 100;
-        total += percent;
-        if (percent >= s.min) above++; else below++;
-      });
-
-      const avg = (total / subjects.length).toFixed(2);
-      summaryBox.innerHTML = `
-        <strong>📊 Summary:</strong><br>
-        Total Subjects: ${subjects.length}<br>
-        Average Attendance: ${avg}%<br>
-        ✅ Above Min: ${above} &nbsp;&nbsp; 🚫 Below Min: ${below}
-      `;
-    }
-
-    function getTagClass(percent, min) {
-      if (percent >= min) return "safe";
-      if (percent >= min - 2) return "warning";
-      return "danger";
-    }
-
-    function renderSubjects() {
-      const container = document.getElementById("subjectContainer");
-      const subjects = getSubjects();
-      renderSummary(subjects);
-      container.innerHTML = "";
-
-      subjects.forEach((s, index) => {
-        const stats = forecast(s.attended, s.conducted, s.min, s.semester);
-        const tagClass = getTagClass(stats.currentPercent, s.min);
-        const tagLabel = tagClass === "safe" ? "Safe" : tagClass === "warning" ? "Borderline" : "Risk";
-
-        const card = document.createElement("div");
-        card.className = "card";
-        card.innerHTML = `
-          <div><strong>${s.name}</strong> (${s.attended}/${s.conducted}) - ${stats.currentPercent.toFixed(2)}%
-            <span class="tag ${tagClass}">${tagLabel}</span>
-          </div>
-          <div class="card-content">
-            <div>🗓️ Date: ${s.date}</div>
-            <div>📚 Semester Total: ${s.semester}</div>
-            <div>✅ Attended: ${s.attended}</div>
-            <div>❌ Absent: ${stats.absent}</div>
-            <div>📊 Current: ${stats.currentPercent.toFixed(2)}%</div>
-            <div>📉 If skip today: ${stats.newPercent.toFixed(2)}%</div>
-            <div>🛑 Max Leaves: ${stats.maxLeavesAllowed}</div>
-            <div>🟢 Leaves Left: ${stats.leavesLeft}</div>
-            <div>🎯 Attend next: ${stats.classesNeeded}</div>
-            ${stats.leavesLeft > 0 ? '<div style="color:green;">✅ You can take leave today.</div>' : '<div style="color:red;">🚫 No more leaves.</div>'}
-            <button class="edit-btn" onclick="editSubject(${index})">✏️ Edit</button>
-            <button class="delete-btn" onclick="deleteSubject(${index})">🗑️ Delete</button>
-          </div>
-        `;
-        card.onclick = function(e) {
-          if (e.target.tagName !== "BUTTON") {
-            const content = this.querySelector(".card-content");
-            content.style.display = content.style.display === "block" ? "none" : "block";
-          }
-        };
-        container.appendChild(card);
-      });
-    }
-
-    window.onload = () => {
-      renderSubjects();
-    };
-  </script>
+    <script src="script.js"></script>
 </body>
+
 </html>
